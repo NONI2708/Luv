@@ -1,0 +1,690 @@
+:root {
+    --primary-color: #ff9ff3;
+    /* Pink */
+    --primary-dark: #f368e0;
+    --secondary-color: #ffcccc;
+    /* Light Pink */
+    --accent-color: #fff200;
+    /* Gold */
+    --bg-color: #2c3a47;
+    --text-color: #fff;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    overflow: hidden !important;
+    /* Lock scrollbars */
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 100;
+    /* Main content above background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- BACKGROUNDS --- */
+.galaxy-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #ff9ff3 0%, #b53471 40%, #2d1b2e 100%);
+    z-index: -1;
+}
+
+#landing-page-bg {
+    background: linear-gradient(to bottom, rgba(255, 159, 243, 0.3), rgba(44, 58, 71, 0.8)), url('landing_bg.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+/* --- SPA SECTIONS --- */
+.spa-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.hidden-section {
+    display: none !important;
+}
+
+.active-section {
+    display: flex !important;
+}
+
+/* --- LANDING PAGE --- */
+#landing-container {
+    text-align: center;
+    z-index: 200;
+    /* Ensure strictly clickable */
+    position: relative;
+}
+
+#landing-container h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px var(--primary-color);
+}
+
+#landing-container p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+/* --- SHOOTING STAR CURSOR --- */
+.cursor-star {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #fff, transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 0 10px #fff, 0 0 20px #ff9ff3;
+    animation: fadeOutTrail 0.8s forwards;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes fadeOutTrail {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
+/* --- CUSTOM HANGING BELLS --- */
+.hanging-bells-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.bell-rope {
+    position: absolute;
+    top: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-rope {
+    left: 5vw;
+    height: 15vh;
+    border-left: 2px dashed rgba(255, 215, 0, 0.5);
+}
+
+.right-rope {
+    right: 5vw;
+    height: 20vh;
+    border-left: 2px dashed rgba(255, 215, 0, 0.5);
+}
+
+.bell-node {
+    position: absolute;
+    bottom: -30px;
+    /* Hang at end of rope */
+    font-size: 3rem;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+    animation: bellSway 3s infinite ease-in-out;
+    transform-origin: top center;
+}
+
+.delay-1 {
+    animation-delay: 0.5s;
+}
+
+.delay-2 {
+    animation-delay: 1s;
+}
+
+.delay-3 {
+    animation-delay: 1.5s;
+}
+
+.bell-body {
+    display: inline-block;
+    filter: drop-shadow(0 0 10px gold);
+}
+
+@keyframes bellSway {
+
+    0%,
+    100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+/* --- GLASSMORPHISM THEME --- */
+.glass-panel,
+.game-container,
+.letter-container,
+.proposal-container {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+    border-radius: 20px !important;
+    color: white !important;
+}
+
+.letter-container {
+    color: #fff !important;
+    /* Override dark text */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4) !important;
+    /* Darker glass for readability */
+}
+
+/* --- DECORATIONS --- */
+.corner-bells {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Click-through */
+    z-index: 50;
+    /* Between BG and Content */
+}
+
+.bell-left,
+.bell-right {
+    position: absolute;
+    width: 25vh;
+    /* Bigger */
+    max-width: 200px;
+    top: -20px;
+    mix-blend-mode: multiply;
+    /* Merge with BG */
+    opacity: 0.9;
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.5)) contrast(1.2);
+}
+
+.bell-left {
+    left: -20px;
+    transform: rotate(5deg);
+}
+
+.bell-right {
+    right: -20px;
+    transform: scaleX(-1) rotate(5deg);
+}
+
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    z-index: 55;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+/* --- CHRISTMAS DECOR (Landing) --- */
+.christmas-decor {
+    pointer-events: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center strictly */
+    z-index: 10;
+}
+
+.light-rope {
+    position: absolute;
+    top: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.left-rope {
+    left: 10px;
+    transform: rotate(10deg);
+}
+
+.right-rope {
+    right: 10px;
+    transform: rotate(-10deg);
+}
+
+.bulb {
+    width: 10px;
+    height: 10px;
+    background: gold;
+    border-radius: 50%;
+    box-shadow: 0 0 10px gold;
+    animation: pulse 1s infinite alternate;
+}
+
+.snowman-walker {
+    position: absolute;
+    bottom: 20px;
+    font-size: 80px;
+    animation: patrol 10s infinite linear;
+}
+
+/* --- COMPONENTS --- */
+.btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    z-index: 200;
+    /* Ensure clickable */
+    pointer-events: auto;
+    /* Force clickable */
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--primary-color);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.floating-compliment {
+    position: fixed;
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px pink;
+    pointer-events: none;
+    z-index: 60;
+    animation: driftLeft 15s linear forwards;
+}
+
+/* --- GAME STYLES --- */
+.game-container {
+    max-width: 800px;
+    width: 90%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    height: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    color: transparent;
+    /* Hide initially */
+    transition: transform 0.3s;
+}
+
+.card.flipped {
+    background: var(--primary-color);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    background: #55efc4;
+    color: white;
+    animation: pulse 0.5s;
+}
+
+.quiz-container button.option-btn {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.quiz-container button.option-btn:hover {
+    background: white;
+    color: var(--primary-color);
+}
+
+/* --- PROPOSAL --- */
+.proposal-container img {
+    width: 200px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+#no-btn {
+    position: absolute;
+    background: #bdc3c7;
+    transition: 0.2s;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    }
+
+    50% {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 0 30px #fff200;
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+/* --- STEAMY WINDOW & CINEMATICS --- */
+.steam-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://img.freepik.com/free-photo/rainy-glass-window-background_23-2149339655.jpg');
+    /* Conceptual Fallback or Gradient */
+    background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.8) 80%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.steam-wipe {
+    opacity: 0 !important;
+    transform: scale(3);
+    transition: all 2s ease-in-out;
+}
+
+/* --- CHRISTMAS TRAIN TRANSITION --- */
+.train-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+.train-transition-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.santa-train-container {
+    position: absolute;
+    bottom: 20%;
+    left: -20%;
+    font-size: 80px;
+    filter: drop-shadow(0 0 20px gold);
+    animation: trainRide 6s linear infinite;
+    white-space: nowrap;
+    transform: scaleX(-1);
+    /* Face Right */
+}
+
+@keyframes trainRide {
+    0% {
+        left: -20%;
+        transform: scaleX(-1) translateX(0);
+    }
+
+    100% {
+        left: 120%;
+        transform: scaleX(-1) translateX(0);
+    }
+}
+
+/* --- MOON NIGHT CINEMATIC BG --- */
+.moon-night-bg {
+    background: radial-gradient(circle at 80% 20%, #f6f6f6 0%, #f6f6f6 5%, #ddd 10%, #000 50%, #000 100%);
+    box-shadow: inset 0 0 100px #fff;
+}
+
+.moon-glow {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 80px white, 0 0 200px #aaa;
+    opacity: 0.9;
+}
+
+/* --- GIFT DROP ANIMATION --- */
+.dropping-gift {
+    position: absolute;
+    animation: dropGift 2s ease-in forwards;
+    font-size: 40px;
+    z-index: 55;
+}
+
+@keyframes dropGift {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(80vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.galaxy-warp-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 9000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+.galaxy-warp-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.warp-star {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: white;
+    transform: rotate(45deg);
+    animation: warpSpeed 0.5s linear infinite;
+}
+
+@keyframes warpSpeed {
+    from {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(200px, 200px) scale(2);
+        opacity: 0;
+    }
+}
+
+/* --- CUTEMYSTERY BOX --- */
+.cute-box-container {
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #ff9ff3);
+    text-align: center;
+}
+
+.cute-box {
+    font-size: 100px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.cute-box:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+@keyframes patrol {
+    0% {
+        left: 0%;
+        transform: scaleX(1);
+    }
+
+    50% {
+        left: 90%;
+        transform: scaleX(1);
+    }
+
+    51% {
+        transform: scaleX(-1);
+    }
+
+    100% {
+        left: 0%;
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes driftLeft {
+    from {
+        right: -200px;
+    }
+
+    to {
+        right: 110vw;
+    }
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* Letter */
+.letter-container {
+    background: #fff;
+    color: #333;
+    padding: 40px;
+    max-width: 600px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    transform: rotate(-1deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}

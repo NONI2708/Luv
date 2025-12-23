@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Persistent Background -->
+    <div class="galaxy-bg" id="landing-page-bg">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <!-- Custom CSS Hanging Bells -->
+    <div class="hanging-bells-container">
+        <div class="bell-rope left-rope">
+            <div class="bell-node">
+                <div class="bell-body">🔔</div>
+            </div>
+            <div class="bell-node delay-1">
+                <div class="bell-body">🔔</div>
+            </div>
+        </div>
+        <div class="bell-rope right-rope">
+            <div class="bell-node delay-2">
+                <div class="bell-body">🔔</div>
+            </div>
+            <div class="bell-node delay-3">
+                <div class="bell-body">🔔</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main SPA Container -->
+    <div id="app">
+
+        <!-- SECTION 1: LANDING PAGE -->
+        <div id="landing-section" class="spa-section active-section">
+            <div id="landing-container">
+                <h1>Happy New Year 2026!</h1>
+                <p>I have a special surprise for you...</p>
+                <button id="start-btn" class="btn">Open Surprise ✨</button>
+
+                <!-- Christmas Decorations for Landing -->
+                <div class="christmas-decor">
+                    <!-- Lights -->
+                    <div class="light-rope left-rope">
+                        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span
+                            class="bulb"></span>
+                    </div>
+                    <div class="light-rope right-rope">
+                        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span
+                            class="bulb"></span>
+                    </div>
+                    <!-- Snowman -->
+                    <div class="snowman-walker">⛄</div>
+                    <!-- Snow Ground -->
+                    <div class="snow-ground"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: GAMES -->
+        <div id="games-section" class="spa-section hidden-section">
+
+            <!-- Memory Game -->
+            <div class="game-container" id="memory-game-section" style="text-align: center;">
+                <h2>♥ Love Memory Match ♥</h2>
+                <p>Find all the matching pairs!</p>
+                <div class="grid" id="memory-game-grid"></div>
+            </div>
+
+            <!-- Quiz Game -->
+            <div class="game-container quiz-container" id="quiz-section" style="display:none; text-align: center;">
+                <h2>♥ The Love Quiz ♥</h2>
+                <div id="quiz-question-container">
+                    <h3 id="question-text">Question goes here?</h3>
+                    <div id="options-container"></div>
+                </div>
+            </div>
+
+            <!-- Love Decorator Game -->
+            <div class="game-container decorator-container" id="decorator-section"
+                style="display:none; text-align:center;">
+                <h2>♥ Decorate My Love ♥</h2>
+                <p>Tap everywhere to shower her with love! (Fill the bar to 100%)</p>
+                <div id="decorator-game-area"
+                    style="position:relative; width:300px; height:400px; margin:0 auto; overflow:hidden; border-radius:15px; border:2px solid #ff9ff3;">
+                    <img src="her_photo.jpeg" alt="Beautiful" style="width:100%; height:100%; object-fit:cover;">
+                    <div id="love-overlay"
+                        style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;"></div>
+                </div>
+                <div class="progress-container"
+                    style="width:80%; height:20px; background:#444; margin:20px auto; border-radius:10px; overflow:hidden;">
+                    <div id="love-bar" style="width:0%; height:100%; background:#ff6b6b; transition:width 0.2s;"></div>
+                </div>
+                <h3 id="love-percent" style="color:#fff;">0% Love</h3>
+            </div>
+
+            <!-- Game Win Message -->
+            <div id="game-message" class="hidden" style="margin-top: 20px; text-align: center;">
+                <h3>You are amazing! 🗝️</h3>
+                <p>You unlocked the key to my heart...</p>
+                <button id="to-letter-btn" class="btn">Read the Letter 💌</button>
+            </div>
+        </div>
+
+        <!-- SECTION 3: LETTER -->
+        <div id="letter-section" class="spa-section hidden-section">
+            <div class="letter-container">
+                <h2>My Dearest Love,</h2>
+                <p>
+                    Every moment with you is a treasure I hold dear.<br><br>
+                    You make my world brighter, my days happier, and my heart fuller.
+                    I promise to always be there for you, to support you, and to cherish every smile.
+                    <br><br>
+                    Winning your heart was my greatest victory, and keeping you happy is my life's mission.
+                    I have one important question to ask you...
+                </p>
+                <div class="signature">
+                    - Your Hatten
+                </div>
+            </div>
+            <button id="to-proposal-btn" class="btn">Next Chapter ❤️</button>
+        </div>
+
+        <!-- SECTION 4: PROPOSAL -->
+        <div id="proposal-section" class="spa-section hidden-section">
+            <div class="fireworks-container" id="proposal-fireworks"></div>
+            <div class="proposal-container">
+                <img src="cute_bear_bunny.png" alt="Cute Bear Bunny" class="bear-img dancing" id="bear-img">
+                <div class="snowman-img" style="font-size: 100px; cursor: default;">☃️</div>
+
+                <h1>Will you be my girlfriend? 🌹</h1>
+
+                <div class="buttons" style="height: 100px;">
+                    <button id="yes-btn" class="btn">YES! ❤️</button>
+                    <button id="no-btn" class="btn">No 😢</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

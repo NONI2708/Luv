@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play for Love</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-container {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            display: none;
+            /* Hidden initially, shown after Memory Game or via JS */
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+        }
+
+        .option-btn:hover {
+            background: white;
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="galaxy-bg">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <!-- Memory Game -->
+    <div class="game-container" id="memory-game-section">
+        <h2>♥ Love Memory Match ♥</h2>
+        <p>Find all the matching pairs!</p>
+        <div class="grid" id="memory-game-grid"></div>
+    </div>
+
+    <!-- Quiz Game -->
+    <div class="game-container quiz-container" id="quiz-section">
+        <h2>♥ The Love Quiz ♥</h2>
+        <div id="quiz-question-container">
+            <h3 id="question-text">Question goes here?</h3>
+            <div id="options-container">
+                <!-- Options injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Puzzle Game -->
+    <div class="game-container puzzle-container" id="puzzle-section" style="display:none; text-align:center;">
+        <h2>♥ Unlocking Your Beauty ♥</h2>
+        <p>Solve this puzzle to see the most beautiful girl in the world...</p>
+        <div id="puzzle-container"
+            style="position:relative; width:300px; height:300px; margin:0 auto; background:#222; border:2px solid #ff6b6b;">
+            <!-- Tiles injected via JS -->
+        </div>
+    </div>
+
+    <div id="game-message" class="hidden" style="margin-top: 20px;">
+        <h3>You are amazing! 🗝️</h3>
+        <p>You unlocked the key to my heart...</p>
+        <a href="letter.html" class="btn">Read the Letter 💌</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Last Question...</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .proposal-container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .bear-img {
+            width: 200px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            position: relative;
+            /* For absolute positioning context if needed, but 'No' button uses fixed/absolute to body usually for safety */
+        }
+
+        #no-btn {
+            position: absolute;
+            /* Allows it to move freely */
+            background-color: #bdc3c7;
+            transition: all 0.2s ease;
+        }
+
+        #yes-btn {
+            z-index: 20;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fireworks-container" id="fireworks-container"></div>
+
+    <div class="galaxy-bg">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <div class="proposal-container">
+        <!-- Placeholder for the generated bear image -->
+        <img src="cute_bear_bunny.png" alt="Cute Bear Bunny" class="bear-img dancing" id="bear-img">
+        <!-- Snowman -->
+        <!-- Snowman -->
+        <div class="snowman-img" id="snowman-img" style="font-size: 100px; cursor: default;">☃️</div>
+
+        <h1>Will you be my girlfriend? 🌹</h1>
+
+        <div class="buttons" style="height: 100px;"> <!-- Fixed height to prevent layout shift initially -->
+            <button id="yes-btn" class="btn">YES! ❤️</button>
+            <button id="no-btn" class="btn">No 😢</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
